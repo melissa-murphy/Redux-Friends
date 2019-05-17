@@ -4,7 +4,7 @@ import { FriendListContainer } from './store/containers/FriendListContainer';
 
 class App extends Component {
     render() {
-        return <FriendListContainer />>
+        return <FriendListContainer />
     }
 }
 
