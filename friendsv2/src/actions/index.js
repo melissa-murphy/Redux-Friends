@@ -23,7 +23,7 @@ export const fetchFriends = () => {
 
 // Add Friends
 export const ADDING_FRIENDS = 'ADDING_FRIENDS';
-export const ADD_FRIENDS_SUCESS = 'ADD_FRIENDS_SUCESS';
+export const ADD_FRIENDS_SUCCESS = 'ADD_FRIENDS_SUCESS';
 export const ADD_FRIENDS_FAULURE = 'ADD_FRIENDS_FAULURE';
 export const addFriends = friend => {
   dispatch({ type: ADDING_FRIENDS });
@@ -32,7 +32,7 @@ export const addFriends = friend => {
     .post(`http://localhost:5000/api/friends/`, friend)
     .then(res => {
       console.log(res);
-      dispatch({ type: ADD_FRIENDS_SUCESS, payload: res.data });
+      dispatch({ type: ADD_FRIENDS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
