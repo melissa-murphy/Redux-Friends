@@ -25,8 +25,36 @@ export const fetchFriends = () => {
 export const ADDING_FRIENDS = 'ADDING_FRIENDS';
 export const ADD_FRIENDS_SUCESS = 'ADD_FRIENDS_SUCESS';
 export const ADD_FRIENDS_FAULURE = 'ADD_FRIENDS_FAULURE';
+export const addFriends = friend => {
+  dispatch({ type: ADDING_FRIENDS });
+  console.log(`-------------------adding friends`);
+  axiosAuth()
+    .post(`http://localhost:5000/api/friends/`, friend)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: ADD_FRIENDS_SUCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: ADD_FRIENDS_FAULURE, payload: err });
+    });
+};
 
 // Remove Friends
 export const REMOVING_FRIENDS = 'REMOVING_FRIENDS';
 export const REMOVE_FRIENDS_SUCESS = 'REMOVE_FRIENDS_SUCESS';
 export const REMOVE_FRIENDS_FAULURE = 'REMOVE_FRIENDS_FAULURE';
+export const removeFriends = id => dispatch => {
+    dispatch({ type: REMOVING_FRIENDS });
+    console.log(`-------------------remove friends`);
+    axiosAuth()
+      .delete(`http://localhost:5000/api/friends/${id}`)
+      .then(res => {
+        // console.log(res);
+        dispatch({ type: REMOVE_FRIENDS_SUCESS, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: REMOVE_FRIENDS_FAULURE, payload: err });
+      });
+  };
