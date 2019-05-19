@@ -11,10 +11,10 @@ import Login from './Login';
 import { Route, NavLink } from 'react-router-dom';
 
 class App extends Component {
-// eslint-disable-next-line no-useless-constructor
-constructor(props) {
-  super(props)
-}
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
     console.log(`CDM: fetch friends`);
@@ -51,12 +51,12 @@ constructor(props) {
 }
 
 const mapStateToProps = state => {
-  const {friendsReducer} = state;
+  // const {friendsReducer} = state;
   // console.log(`---------------------map state to props App` + friendsReducer.friends)
   return {
-    friends: friendsReducer.friends,
-    fetchFriends: friendsReducer.fetchFriends,
-    error: friendsReducer.error
+    friends: state.friendsReducer.friends,
+    fetchFriends: state.friendsReducer.fetchFriends,
+    error: state.friendsReducer.error
   };
 };
 
