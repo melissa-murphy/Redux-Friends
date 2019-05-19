@@ -54,9 +54,9 @@ const mapStateToProps = state => {
   // const {friendsReducer} = state;
   // console.log(`---------------------map state to props App` + friendsReducer.friends)
   return {
-    friends: state.friendsReducer.friends,
-    fetchFriends: state.friendsReducer.fetchFriends,
-    error: state.friendsReducer.error
+    friends: state.friends,
+    fetchFriends: state.fetchFriends,
+    error: state.error
   };
 };
 
