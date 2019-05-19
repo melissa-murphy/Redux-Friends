@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFriends } from './../actions/index';
+import { addFriends } from '../actions';
 
 class AddFriend extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       newFriend: {
-        name: ''
+        name: '',
+        loading: false,
+        error: ''
       }
     };
   }
@@ -43,17 +45,25 @@ class AddFriend extends Component {
           <input
             onChange={this.handleInputChange}
             placeholder="name"
-            value={this.state.friend.name}
+            value={this.state.newFriend.name}
             name="name"
           />
-          <button onClick={this.addFriends}>+friend</button>
+          <button onClick={this.addFriend}>+friend</button>
         </form>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  console.log('-------------------new friend:' + state.friends.friends);
+  return {
+    friends: state.friends.friends,
+    loading: state.friends.isLoading,
+    error: state.friends.error
+  };
+};
 export default connect(
-  null,
+  mapStateToProps,
   { addFriends }
 )(AddFriend);
